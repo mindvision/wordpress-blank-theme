@@ -1,0 +1,102 @@
+//-----------------------------------------------------------------
+// Stylesheet: 768px and down
+//-----------------------------------------------------------------
+
+//-----------------------------------------------------------------
+// Grid/Layout
+.inner {
+  @include fluid-wrap(25px);
+}
+
+.content-area {
+  @include span(12);
+}
+
+.gap {
+  display: none;
+}
+
+.sidebar {
+  @include span(12);
+}
+
+.left,
+.right {
+  @include span(12);
+}
+
+//-----------------------------------------------------------------
+// Header
+.site-header {
+}
+
+//-----------------------------------------------------------------
+// Navigation
+$mobile-nav-background: darken($color-primary, 5%);
+
+.header-main {
+  nav {
+    display: none;
+  }
+}
+
+.mobile-nav-icon {
+  color: $color-nav-hover !important;
+  display: block;
+  float: right;
+  padding: 0.9em 0.5em;
+
+  &:hover,
+  &.active {
+    color: inherit;
+    background: $mobile-nav-background;
+    text-decoration: none;
+  }
+
+  .fa {
+    font-size: 2.5em;
+    padding: 0.1em 0.25em;
+  }
+}
+
+.mobile-nav-menu {
+  display: none;
+  background: $mobile-nav-background;
+
+  ul {
+    @include fluid-wrap(3em);
+    padding-right: 0;
+    list-style-type: none;
+    margin: 0;
+  }
+
+  li {
+    a {
+      padding: 10px 0;
+      font-size: 17px;
+      display: block;
+      color: $white;
+
+      &:hover,
+      &:active,
+      &:focus {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+  }
+}
+
+//-----------------------------------------------------------------
+// Footer
+.footer-main {
+  .menu-wrapper {
+    .menu {
+      @include span(12);
+
+      &:not(:first-of-type) {
+        margin-top: $content-padding;
+      }
+    }
+  }
+}

@@ -1,0 +1,65 @@
+//-----------------------------------------------------------------
+// Stylesheet: Sidebars
+//-----------------------------------------------------------------
+
+.with-sidebar {
+  @include span(9);
+  padding-right: 0;
+}
+
+.sidebar {
+  @include span(3);
+  padding-left: 0;
+
+  .widget-title {
+    text-transform: uppercase;
+    color: $color-grey-dark;
+  }
+
+  .widget {
+    background: $color-grey-light;
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+    overflow: hidden;
+
+    table {
+      width: 100%;
+
+      th,
+      td {
+        padding: initial;
+      }
+    }
+
+    ul {
+      padding-left: 2em;
+
+      li {
+        &:first-child {
+        }
+
+        &:last-child {
+        }
+
+        a {
+          padding: 0.2em 0;
+          display: block;
+        }
+
+        /* deep nesting */
+        ul {
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .with-sidebar {
+    @include span(12);
+  }
+
+  .sidebar {
+    @include span(12);
+  }
+}

@@ -1,0 +1,18 @@
+//-----------------------------------------------------------------
+// Stylesheet: Breadcrumbs
+//-----------------------------------------------------------------
+
+.breadcrumbs-wrapper {
+  @include clearfix;
+  background: $color-grey-light;
+  border-bottom: 1px solid darken($color-grey-light, 10%);
+
+  #breadcrumbs {
+    margin: 0;
+    padding: 0.5em 0;
+
+    > span {
+      display: block;
+    }
+  }
+}

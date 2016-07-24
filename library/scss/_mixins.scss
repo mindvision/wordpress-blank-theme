@@ -1,0 +1,252 @@
+//-----------------------------------------------------------------
+// Stylesheet: Mixins & Constants Stylesheet
+//-----------------------------------------------------------------
+
+@import 'compass/css3';
+
+//-----------------------------------------------------------------
+// Colours
+
+$black: #000;
+$white: #fff;
+
+$color-primary: rgb(131, 24, 55);
+$color-secondary: rgb(252, 184, 63);
+$color-tertiary: rgb(216, 240, 251);
+
+$color-grey-light: rgb(228, 229, 231);
+$color-grey-med: rgb(155, 155, 155);
+$color-grey-dark: rgb(105, 105, 105);
+
+$color-primary-desaturated: rgba(desaturate($color-primary, 40%), 0.9);
+
+$color-text: rgb(31, 24, 44);
+$color-text-alt: rgba($white, 0.8);
+$color-text-heading: $color-primary;
+$color-accent: $color-secondary;
+$color-link: $color-primary;
+
+//-----------------------------------------------------------------
+// Fonts
+
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i';
+
+$font-base: 'Open Sans', Arial, sans-serif;
+$font-heading: 'Open Sans', Arial, sans-serif;
+$font-special: 'Open Sans', Arial, sans-serif;
+
+//-----------------------------------------------------------------
+// Typography
+
+$base-font-size: 14px;
+
+body {
+  background: $white;
+  font-family: $font-base;
+  font-size: $base-font-size;
+  font-weight: 100;
+  line-height: 1.5;
+  color: $color-text;
+  text-align: left;
+
+  *::selection {
+    background: $color-link;
+    color: $white;
+  }
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5 {
+  font-family: $font-heading;
+  text-rendering: optimizelegibility;
+  font-weight: bold;
+  margin-top: 0;
+
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+h1,
+.h1 {
+  font-size: 2.5em;
+  line-height: 1.333em;
+  color: $color-primary;
+}
+
+h2,
+.h2 {
+  font-size: 1.75em;
+  line-height: 1.4em;
+  margin-bottom: 0.375em;
+  color: $color-primary !important;
+}
+
+h3,
+.h3 {
+  font-size: 1.125em;
+}
+
+h4,
+.h4 {
+  font-size: 1em;
+  margin-bottom: 0;
+}
+
+h5,
+.h5 {
+  font-size: 0.846em;
+  line-height: 2.09em;
+}
+
+a,
+a:visited {
+  color: $color-link;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: lighten($color-link, 10%);
+    text-decoration: underline;
+  }
+}
+
+strong {
+  font-weight: bold;
+}
+
+.highlight {
+  color: $color-link;
+}
+
+table {
+  border-collapse: collapse;
+
+  th {
+    background: $color-grey-light;
+  }
+
+  th,
+  td {
+    padding: 0.5em 1em;
+    border: 1px solid $color-grey-light;
+  }
+}
+
+//-----------------------------------------------------------------
+// Grid
+
+$columns: 12;
+$default-gutter: 30px;
+$content-padding: 30px;
+
+@mixin fixed-wrap($width, $gutter: $default-gutter) {
+  width: $width;
+  padding-left: $gutter / 2;
+  padding-right: $gutter / 2;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include clearfix;
+}
+
+@mixin fluid-wrap($gutter: $default-gutter) {
+  width: 100%;
+  padding-left: $gutter / 2;
+  padding-right: $gutter / 2;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include clearfix;
+}
+
+@mixin span($cols, $gutter: $default-gutter) {
+  $single-width: 100% / $columns;
+  width: ($cols * $single-width);
+  padding-left: $gutter / 2;
+  padding-right: $gutter / 2;
+  float: left;
+}
+
+@mixin full-width {
+  @include span(12);
+}
+
+@mixin push-block {
+  float: right;
+}
+
+//-----------------------------------------------------------------
+// Tools
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+// Contain floats: nicolasgallagher.com/micro-clearfix-hack/
+@mixin clearfix {
+  zoom: 1;
+
+  &:before,
+  &:after {
+    content: '';
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+.clearfix {
+  @include clearfix;
+}
+
+a:focus {
+  outline: 0;
+}
+
+.left,
+.right {
+  @include span(6);
+}
+
+//-----------------------------------------------------------------
+// Animations
+
+@include keyframes(zoomIn) {
+  from {
+    @include transform(scale3d(0.95, 0.95, 0.95));
+    opacity: 0;
+  }
+
+  75% {
+    opacity: 1;
+  }
+}
+
+%animation {
+  @import 'ceaser-easing';
+  @include animation-duration(600ms);
+  @include animation-fill-mode(both);
+  @include animation-timing-function(ceaser($easeOutCubic));
+}
+
+%fast-animation {
+  @include animation-duration(200ms);
+}
+
+.animation-zoom-in {
+  @extend %animation;
+  @include animation-name(zoomIn);
+}
