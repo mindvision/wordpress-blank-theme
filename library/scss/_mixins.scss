@@ -10,15 +10,16 @@
 $black: #000;
 $white: #fff;
 
-$color-primary: rgb(131, 24, 55);
-$color-secondary: rgb(252, 184, 63);
-$color-tertiary: rgb(216, 240, 251);
+$color-primary: #386589;
+$color-secondary: $white;
+$color-tertiary: $black;
 
 $color-grey-light: rgb(228, 229, 231);
 $color-grey-med: rgb(155, 155, 155);
 $color-grey-dark: rgb(105, 105, 105);
 
-$color-primary-desaturated: rgba(desaturate($color-primary, 40%), 0.9);
+$color-dark: lighten($black, 10%);
+$color-light: darken($white, 10%);
 
 $color-text: rgb(31, 24, 44);
 $color-text-alt: rgba($white, 0.8);
@@ -29,11 +30,11 @@ $color-link: $color-primary;
 //-----------------------------------------------------------------
 // Fonts
 
-@import 'https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i,700,700i';
+@import 'https://fonts.googleapis.com/css?family=Roboto:400,400i,600,600i,700,700i';
 
-$font-base: 'Open Sans', Arial, sans-serif;
-$font-heading: 'Open Sans', Arial, sans-serif;
-$font-special: 'Open Sans', Arial, sans-serif;
+$font-base: 'Roboto', Arial, sans-serif;
+$font-heading: 'Roboto', Arial, sans-serif;
+$font-special: 'Roboto', Arial, sans-serif;
 
 //-----------------------------------------------------------------
 // Typography
